@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christchurch &amp; Lake Tekapo – Day 1</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>Christchurch &amp; Lake Tekapo – Trip Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f5f0e8;
@@ -23,102 +23,93 @@
       --green-soft: #d0ece3;
       --amber: #b8860b;
       --amber-soft: #f0e6cc;
+      --teal: #0b7a75;
+      --teal-soft: #c8e8e6;
       --purple: #6c4fa0;
       --purple-soft: #e4ddf0;
-      --pink: #a44a6f;
-      --pink-soft: #f0d8e4;
+      --navy: #1e3a5f;
+      --navy-soft: #d0dae8;
       --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow-lg: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* HERO */
     .hero {
-      background: var(--text);
+      background: var(--navy);
       color: var(--bg);
-      padding: 3rem 1.5rem 2.5rem;
+      padding: 3.5rem 1.5rem 3rem;
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 30%, rgba(42,100,150,0.10) 0%, transparent 50%);
+        radial-gradient(ellipse at 15% 60%, rgba(11,122,117,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(192,57,43,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(11,122,117,0.10) 0%, transparent 50%);
       pointer-events: none;
     }
-
-    .hero-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
     .hero-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(245,240,232,0.5);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
-
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: rgba(11,122,117,0.8);
+      display: inline-block;
+    }
     .hero h1 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
       font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.6rem;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 0.8rem;
     }
-
+    .hero h1 em { font-style: normal; color: rgba(11,200,195,0.9); }
     .hero-sub {
       font-size: 1rem;
-      color: rgba(245,240,232,0.7);
-      max-width: 520px;
-      line-height: 1.5;
+      color: rgba(245,240,232,0.68);
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
     }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-    }
-
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .hero-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      padding: 0.3rem 0.65rem;
-      border: 1px solid rgba(245,240,232,0.25);
+      font-size: 0.65rem;
+      padding: 0.28rem 0.65rem;
+      border: 1px solid rgba(245,240,232,0.2);
       border-radius: 999px;
-      color: rgba(245,240,232,0.85);
-      letter-spacing: 0.03em;
+      color: rgba(245,240,232,0.8);
+      letter-spacing: 0.04em;
     }
+    .hero-tag.tag-teal { border-color: rgba(11,122,117,0.6); color: rgba(11,200,195,0.9); }
 
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
@@ -131,44 +122,33 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
-
-    .nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-    }
-
+    .nav::-webkit-scrollbar { display: none; }
+    .nav-inner { max-width: 720px; margin: 0 auto; display: flex; }
     .nav a {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: var(--text-dim);
       text-decoration: none;
-      padding: 0.75rem 0.9rem;
+      padding: 0.75rem 0.85rem;
       white-space: nowrap;
       border-bottom: 2px solid transparent;
       transition: color 0.2s, border-color 0.2s;
     }
+    .nav a:hover, .nav a.active { color: var(--text); border-bottom-color: var(--teal); }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--text);
-      border-bottom-color: var(--accent);
+    /* MAIN */
+    .main { max-width: 720px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* SECTIONS */
+    .timeline-section { padding-top: 2.75rem; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
     }
-
-    .main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1.5rem 4rem;
-    }
-
-    .timeline-section {
-      padding-top: 2.5rem;
-    }
-
     .section-title {
       font-family: 'Fraunces', serif;
       font-size: 1.5rem;
@@ -177,13 +157,12 @@
       margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
-
     .section-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -191,30 +170,17 @@
       flex-shrink: 0;
     }
 
-    .timeline {
-      position: relative;
-      padding-left: 2.75rem;
-    }
-
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2.75rem; }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 11px;
-      top: 8px;
-      bottom: 8px;
+      left: 11px; top: 8px; bottom: 8px;
       width: 2px;
-      background: var(--border);
+      background: linear-gradient(to bottom, var(--border), var(--teal-soft), var(--border));
     }
-
-    .stop {
-      position: relative;
-      margin-bottom: 1.75rem;
-    }
-
-    .stop:last-child {
-      margin-bottom: 0;
-    }
-
+    .stop { position: relative; margin-bottom: 1.85rem; }
+    .stop:last-child { margin-bottom: 0; }
     .stop-dot {
       position: absolute;
       left: -2.75rem;
@@ -230,79 +196,160 @@
       z-index: 2;
       transition: border-color 0.3s, transform 0.3s;
     }
-
     .stop-dot-inner {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--teal);
       opacity: 0;
       transition: opacity 0.3s;
     }
-
-    .stop:hover .stop-dot {
-      border-color: var(--accent);
-      transform: scale(1.1);
-    }
-
-    .stop:hover .stop-dot-inner {
-      opacity: 1;
-    }
-
+    .stop:hover .stop-dot { border-color: var(--teal); transform: scale(1.1); }
+    .stop:hover .stop-dot-inner { opacity: 1; }
+    .stop-dot.dot-hotel { border-color: var(--navy); background: var(--navy); }
+    .stop-dot.dot-hotel .stop-dot-inner { background: white; opacity: 1; }
     .stop-time {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-light);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       margin-bottom: 0.2rem;
     }
-
-    .stop-name {
-      font-weight: 700;
-      font-size: 1.05rem;
-      margin-bottom: 0.25rem;
-    }
-
+    .stop-meta { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+    .stop-name { font-weight: 700; font-size: 1.05rem; }
     .stop-name a {
       color: var(--text);
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       transition: border-color 0.2s, color 0.2s;
     }
-
-    .stop-name a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .stop-desc {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.55;
-    }
-
+    .stop-name a:hover { border-color: var(--teal); color: var(--teal); }
+    .stop-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; }
     .stop-link {
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--teal);
       text-decoration: none;
       margin-top: 0.35rem;
       transition: opacity 0.2s;
     }
+    .stop-link:hover { opacity: 0.7; }
 
-    .stop-link:hover {
-      opacity: 0.7;
+    /* BADGES */
+    .card-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      padding: 0.14rem 0.42rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .badge-chc     { background: var(--blue-soft);   color: var(--blue); }
+    .badge-tekapo  { background: var(--teal-soft);   color: var(--teal); }
+    .badge-route   { background: var(--green-soft);  color: var(--green); }
+    .badge-daytrip { background: var(--purple-soft); color: var(--purple); }
+    .badge-hotel   { background: var(--navy-soft);   color: var(--navy); }
+
+    /* HOTEL CARD */
+    .hotel-card {
+      background: var(--navy);
+      color: var(--bg);
+      border-radius: 16px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hotel-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(11,122,117,0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hotel-card-inner { position: relative; z-index: 1; }
+    .hotel-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+    .hotel-address { font-size: 0.85rem; color: rgba(245,240,232,0.6); margin-bottom: 1rem; line-height: 1.5; }
+    .hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .hotel-stat {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px;
+      padding: 0.65rem 0.8rem;
+    }
+    .hotel-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+      margin-bottom: 0.15rem;
+    }
+    .hotel-stat-value { font-size: 0.86rem; font-weight: 600; color: rgba(245,240,232,0.92); }
+    .hotel-perks { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .hotel-perk {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(11,122,117,0.25);
+      border: 1px solid rgba(11,122,117,0.4);
+      color: rgba(11,200,195,0.9);
+      letter-spacing: 0.04em;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
+    /* TEKAPO STAY */
+    .stay-card {
+      background: linear-gradient(135deg, var(--teal) 0%, #0a5c58 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .stay-card-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .stay-card-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.55; margin-bottom: 0.9rem; }
+    .stay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .stay-btn:hover { background: rgba(255,255,255,0.25); }
+
+    /* DAY DIVIDER */
+    .day-divider { display: flex; align-items: center; gap: 0.75rem; padding-top: 2.75rem; margin-bottom: 0.25rem; }
+    .day-divider-line { flex: 1; height: 1px; background: var(--border); }
+    .day-divider-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      white-space: nowrap;
     }
 
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
     .card {
       background: var(--surface);
       border: 1px solid var(--border-light);
@@ -311,55 +358,14 @@
       box-shadow: var(--shadow);
       transition: box-shadow 0.3s, transform 0.2s;
     }
+    .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+    .card-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .card-name a { color: var(--text); text-decoration: none; }
+    .card-name a:hover { color: var(--teal); }
+    .card-desc { font-size: 0.84rem; color: var(--text-dim); line-height: 1.5; }
 
-    .card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-1px);
-    }
-
-    .card-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .card-name a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .card-name a:hover {
-      color: var(--accent);
-    }
-
-    .card-badge {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      font-weight: 500;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-left: 0.4rem;
-      vertical-align: middle;
-    }
-
-    .badge-chc { background: var(--blue-soft); color: var(--blue); }
-    .badge-tekapo { background: var(--amber-soft); color: var(--amber); }
-    .badge-route { background: var(--green-soft); color: var(--green); }
-    .badge-daytrip { background: var(--purple-soft); color: var(--purple); }
-
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-
-    .collapsible {
-      padding-top: 2.5rem;
-    }
-
+    /* COLLAPSIBLE */
+    .collapsible { padding-top: 2.5rem; }
     .collapse-trigger {
       width: 100%;
       background: var(--surface);
@@ -371,133 +377,95 @@
       align-items: center;
       cursor: pointer;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.97rem;
       font-weight: 600;
       color: var(--text);
       box-shadow: var(--shadow);
       transition: background 0.2s;
       text-align: left;
     }
+    .collapse-trigger:hover { background: var(--bg2); }
+    .collapse-arrow { font-size: 0.8rem; color: var(--text-dim); transition: transform 0.3s; }
+    .collapse-trigger.open .collapse-arrow { transform: rotate(180deg); }
+    .collapse-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapse-body.open { max-height: 5000px; }
+    .collapse-inner { padding-top: 0.75rem; }
 
-    .collapse-trigger:hover {
-      background: var(--bg2);
-    }
+    /* MINI */
+    .mini { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem 1.3rem; margin-bottom: 0.75rem; box-shadow: var(--shadow); }
+    .mini-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.4rem; }
+    .mini-flow { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+    .mini-flow .arrow { color: var(--teal); margin: 0 0.2rem; font-weight: 700; }
 
-    .collapse-arrow {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      transition: transform 0.3s;
-    }
-
-    .collapse-trigger.open .collapse-arrow {
-      transform: rotate(180deg);
-    }
-
-    .collapse-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-    }
-
-    .collapse-body.open {
-      max-height: 5000px;
-    }
-
-    .collapse-inner {
-      padding-top: 0.75rem;
-    }
-
-    .mini {
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: 1.15rem 1.25rem;
-      margin-bottom: 0.75rem;
-      box-shadow: var(--shadow);
-    }
-
-    .mini-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .mini-flow {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.55;
-    }
-
-    .mini-flow .arrow {
-      color: var(--accent);
-      margin: 0 0.25rem;
-      font-weight: 700;
-    }
-
+    /* NOTES */
     .tip {
       background: var(--green-soft);
       border: 1px solid rgba(29,122,95,0.2);
       border-radius: 12px;
       padding: 1rem 1.25rem;
-      margin-top: 2.5rem;
+      margin-top: 0.75rem;
       font-size: 0.88rem;
       color: var(--green);
       line-height: 1.55;
     }
+    .tip strong { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
 
-    .tip strong {
-      display: block;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.25rem;
+    .note-amber {
+      background: var(--amber-soft);
+      border: 1px solid rgba(184,134,11,0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.84rem;
+      color: var(--amber);
+      line-height: 1.55;
+      margin-top: 0.5rem;
     }
+    .note-amber strong { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
 
-    .footer {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-      text-align: center;
-      color: var(--text-light);
-      font-size: 0.8rem;
+    .note-teal {
+      background: var(--teal-soft);
+      border: 1px solid rgba(11,122,117,0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.84rem;
+      color: var(--teal);
+      line-height: 1.55;
+      margin-top: 0.75rem;
     }
+    .note-teal strong { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
 
+    /* FOOTER */
+    .footer { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 3rem; text-align: center; color: var(--text-light); font-size: 0.78rem; border-top: 1px solid var(--border); }
+
+    /* RESPONSIVE */
     @media (min-width: 520px) {
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .hotel-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
     }
-
     @media (max-width: 520px) {
-      .hero {
-        padding: 2.5rem 1.25rem 2rem;
-      }
-      .main {
-        padding: 0 1.25rem 3rem;
-      }
-      .nav {
-        padding: 0 1rem;
-      }
-      .nav a {
-        padding: 0.65rem 0.7rem;
-        font-size: 0.72rem;
-      }
+      .hero { padding: 2.5rem 1.25rem 2rem; }
+      .main { padding: 0 1.25rem 3rem; }
+      .nav { padding: 0 1rem; }
+      .nav a { padding: 0.65rem 0.7rem; font-size: 0.7rem; }
+      .hotel-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
+
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Thu 26 Mar 2026</div>
-      <h1>Christchurch &amp;<br />Lake Tekapo – Day 1</h1>
+      <div class="hero-eyebrow">SQ 297 · Thu 26 Mar 2026 · CHC Layover</div>
+      <h1>Christchurch &amp;<br /><em>Lake Tekapo</em></h1>
       <p class="hero-sub">
-        Land in CHC → alpacas → inland drive → Tekapo lake &amp; church → hot pools &amp; stars. One clean route from airport to the Mackenzie big-sky.
+        Land → alpacas → inland drive → Mackenzie Basin. Two nights under the darkest skies in New Zealand.
       </p>
       <div class="hero-tags">
+        <span class="hero-tag tag-teal">Tekapo</span>
+        <span class="hero-tag tag-teal">Dark Sky</span>
         <span class="hero-tag">Alpacas</span>
         <span class="hero-tag">Roadtrip</span>
-        <span class="hero-tag">Hot pools</span>
+        <span class="hero-tag">Hot Pools</span>
         <span class="hero-tag">Stargazing</span>
       </div>
     </div>
@@ -505,131 +473,286 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#route" class="active">Route</a>
-      <a href="#landmarks">Landmarks</a>
-      <a href="#cafes">Cafes</a>
+      <a href="#day1" class="active">Day 1</a>
+      <a href="#day2">Day 2</a>
+      <a href="#hotel">Hotel</a>
+      <a href="#tekapo-stay">Tekapo Stay</a>
+      <a href="#cafes">Cafés</a>
       <a href="#eat">Eat</a>
-      <a href="#visit">Visit</a>
       <a href="#do">Do</a>
-      <a href="#mini">Mini Routes</a>
+      <a href="#mini">Routes</a>
     </div>
   </nav>
 
   <main class="main">
-    <!-- MAIN ROUTE -->
-    <section class="timeline-section" id="route">
+
+    <!-- DAY 1 -->
+    <section class="timeline-section" id="day1">
+      <div class="section-label">Thursday 26 March 2026</div>
       <h2 class="section-title">
-        <span class="section-icon" style="background:var(--accent-soft);color:var(--accent);">↓</span>
-        Main Route – Land → Alpacas → Tekapo
+        <span class="section-icon" style="background:var(--teal-soft);color:var(--teal);">①</span>
+        Day 1 — Land → Alpacas → Tekapo
       </h2>
       <div class="timeline">
+
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
-          <div class="stop-time">10:40</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Christchurch+International+Airport" target="_blank" rel="noopener noreferrer">Arrive Christchurch Airport (CHC)</a>
+          <div class="stop-time">10:40 local</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Christchurch+International+Airport" target="_blank" rel="noopener noreferrer">Arrive Christchurch Airport (CHC)</a></div>
             <span class="card-badge badge-chc">Christchurch</span>
           </div>
-          <div class="stop-desc">Land on SQ 297, clear immigration, pick up bags, grab the rental car.</div>
+          <div class="stop-desc">Land on SQ 297. Clear immigration via crew lane (lanes 16 &amp; 17), collect bags, pick up the rental car. Budget 60–90 min to be road-ready.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">~12:00</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Sherlin+Alpacas+West+Melton" target="_blank" rel="noopener noreferrer">Sherlin Alpaca Farm</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Sherlin+Alpacas+West+Melton" target="_blank" rel="noopener noreferrer">Sherlin Alpaca Farm</a></div>
             <span class="card-badge badge-route">Alpacas</span>
+            <span class="card-badge badge-chc">West Melton</span>
           </div>
-          <div class="stop-desc">Drive ~25 min to West Melton. Hand‑feed a big herd of alpacas, wander the paddocks, take photos and reset from the flight.</div>
+          <div class="stop-desc">25 min west of the airport. Hand-feed a big herd, wander the paddocks, reset from the overnight flight before the long drive south.</div>
+          <div class="note-amber">
+            <strong>🦙 On the alpaca question</strong>
+            Dedicated alpaca farms in the Mackenzie Basin are rare — it's mostly sheep and cattle country. Sherlin adds only ~30 min to the total journey and is genuinely great. Worth the small detour.
+          </div>
           <a class="stop-link" href="https://www.google.com/maps/place/Sherlin+Alpacas" target="_blank" rel="noopener noreferrer">↗ View on Maps</a>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
-          <div class="stop-time">13:15</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Geraldine+New+Zealand" target="_blank" rel="noopener noreferrer">Lunch stop – Geraldine</a>
+          <div class="stop-time">13:30</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Geraldine+New+Zealand+cafe" target="_blank" rel="noopener noreferrer">Lunch — Geraldine</a></div>
             <span class="card-badge badge-route">On route</span>
           </div>
-          <div class="stop-desc">Head south via the inland route. Stop in Geraldine for lunch and a quick leg stretch; cute little town with cafés and a small bush walk if you want.</div>
+          <div class="stop-desc">Head south on the inland scenic route. Geraldine is a quiet little town with good cafés and a bakery. ~1.5 hr from Sherlin, ~1 hr from Tekapo.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">15:30</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Lake+Tekapo+village" target="_blank" rel="noopener noreferrer">Arrive Lake Tekapo village</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Lake+Tekapo+village" target="_blank" rel="noopener noreferrer">Arrive Lake Tekapo village</a></div>
             <span class="card-badge badge-tekapo">Tekapo</span>
           </div>
-          <div class="stop-desc">Check into your Tekapo accommodation and take a breather – you’re now in the Mackenzie Basin with the turquoise lake right there.</div>
+          <div class="stop-desc">Check into your Tekapo accommodation (see <a href="#tekapo-stay" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal-soft)">Tekapo Stay ↓</a>). The turquoise lake is right there — you'll understand the hype immediately.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">16:00 – 17:30</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Church+of+the+Good+Shepherd+Tekapo" target="_blank" rel="noopener noreferrer">Church of the Good Shepherd &amp; lakeshore</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Church+of+the+Good+Shepherd+Tekapo" target="_blank" rel="noopener noreferrer">Church of the Good Shepherd &amp; lakeshore</a></div>
             <span class="card-badge badge-tekapo">Tekapo</span>
           </div>
-          <div class="stop-desc">Walk to the stone church and along the rocky lakeshore. Take the postcard shots, breathe the cold air, and do an easy out‑and‑back along the lake edge.</div>
+          <div class="stop-desc">Walk to the iconic stone church on the lake edge and stroll the rocky shoreline. Best in the late afternoon light — cold air, big mountains, ridiculous colour.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">17:30 – 18:45</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Mount+John+Summit+Tekapo" target="_blank" rel="noopener noreferrer">Mt John Summit &amp; Astro Café</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Mount+John+Summit+Tekapo" target="_blank" rel="noopener noreferrer">Mt John Summit &amp; Astro Café</a></div>
             <span class="card-badge badge-tekapo">Tekapo</span>
           </div>
-          <div class="stop-desc">Drive or hike up to Mt John. Grab a coffee at Astro Café and soak the 360° views over Lake Tekapo and the Southern Alps, ideally around golden hour.</div>
+          <div class="stop-desc">Drive up for 360° views over the lake and Southern Alps at golden hour. Coffee at Astro Café before it closes. One of the great NZ viewpoints.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">19:00</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Blue+Lake+Eatery+Lake+Tekapo" target="_blank" rel="noopener noreferrer">Dinner in Tekapo village</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Blue+Lake+Eatery+Lake+Tekapo" target="_blank" rel="noopener noreferrer">Dinner in the village</a></div>
             <span class="card-badge badge-tekapo">Tekapo</span>
           </div>
-          <div class="stop-desc">Sit‑down dinner at <strong>Blue Lake Eatery &amp; Bar</strong> (hearty Kiwi dishes &amp; local beer) or <strong>Kohan</strong> (Japanese, lighter but still cosy), depending on mood.</div>
+          <div class="stop-desc"><strong>Blue Lake Eatery &amp; Bar</strong> for hearty Kiwi mains (Mt Cook salmon, lamb shanks), or <strong>Kohan</strong> for Japanese and something lighter. Both are consistently good.</div>
         </div>
 
         <div class="stop">
           <div class="stop-dot"><span class="stop-dot-inner"></span></div>
           <div class="stop-time">21:00 – late</div>
-          <div class="stop-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Tekapo+Springs" target="_blank" rel="noopener noreferrer">Stargazing &amp; hot pools</a>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.tekapostargazing.co.nz/" target="_blank" rel="noopener noreferrer">Stargazing &amp; hot pools</a></div>
             <span class="card-badge badge-tekapo">Dark Sky</span>
           </div>
-          <div class="stop-desc">Choose between <strong>Tekapo Star Gazing</strong> (guided night‑sky intro then floating in hot pools) or a <strong>Dark Sky Project</strong> observatory tour. Book ahead and hope for a clear, moon‑light night.</div>
+          <div class="stop-desc"><strong>Tekapo Star Gazing</strong> — guided night-sky intro then float in hot pools under the Aoraki Mackenzie Dark Sky Reserve. Or the <strong>Dark Sky Project</strong> for a full telescope session. Book ahead.</div>
         </div>
+
+      </div>
+    </section>
+
+    <!-- DAY 2 -->
+    <div class="day-divider">
+      <div class="day-divider-line"></div>
+      <div class="day-divider-label">Next day</div>
+      <div class="day-divider-line"></div>
+    </div>
+
+    <section class="timeline-section" id="day2">
+      <div class="section-label">Friday 27 March 2026</div>
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--teal-soft);color:var(--teal);">②</span>
+        Day 2 — Tekapo Morning → Back to Christchurch
+      </h2>
+      <div class="timeline">
+
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">08:00</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Lake+Tekapo+Peninsula+Walk" target="_blank" rel="noopener noreferrer">Morning — Peninsula Walkway</a></div>
+            <span class="card-badge badge-tekapo">Tekapo</span>
+          </div>
+          <div class="stop-desc">Easy 2–3 hr loop around the Tekapo peninsula. Stunning lake views in the morning light before the tour buses arrive. Bring a layer — it's cold in the Mackenzie Basin mornings.</div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">10:30</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/place/The+Greedy+Cow+Cafe" target="_blank" rel="noopener noreferrer">Brunch — The Greedy Cow</a></div>
+            <span class="card-badge badge-tekapo">Tekapo</span>
+          </div>
+          <div class="stop-desc">Tekapo's most popular café. Big cabinet food, proper cooked breakfasts, good coffee. Vego/vegan/GF options. Go early — fills up fast.</div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">12:00</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Rakaia+Gorge+lookout+New+Zealand" target="_blank" rel="noopener noreferrer">Drive back — stop at Rakaia Gorge</a></div>
+            <span class="card-badge badge-route">On route</span>
+          </div>
+          <div class="stop-desc">Head north via SH8/SH72. Pull over at the Rakaia Gorge lookout — 5 min stop over the milky-blue river. Easy add-on if the weather is clear.</div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">~15:00</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/place/Christchurch+Gondola" target="_blank" rel="noopener noreferrer">Christchurch — Gondola or Botanic Gardens</a></div>
+            <span class="card-badge badge-chc">Christchurch</span>
+          </div>
+          <div class="stop-desc"><strong>Gondola</strong> for a cable car up to views over the city, Lyttelton Harbour and the Alps. Or <strong>Botanic Gardens</strong> for a slow afternoon stroll along the Avon River. Pick your mood.</div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot dot-hotel"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">Evening</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/search/?api=1&query=Fable+Christchurch+166+Gloucester+Street" target="_blank" rel="noopener noreferrer">Check in — Fable Christchurch</a></div>
+            <span class="card-badge badge-hotel">Crew Hotel</span>
+          </div>
+          <div class="stop-desc">166 Gloucester Street, Christchurch Central. Your official crew layover hotel — double-bedded room, free gym, 25% off food &amp; drinks. Full details below.</div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">Sunset</div>
+          <div class="stop-meta">
+            <div class="stop-name"><a href="https://www.google.com/maps/place/He+Puna+Taimoana+-+New+Brighton+Hot+Pools" target="_blank" rel="noopener noreferrer">Optional — He Puna Taimoana</a></div>
+            <span class="card-badge badge-chc">New Brighton</span>
+          </div>
+          <div class="stop-desc">Modern oceanfront hot pools by the New Brighton pier. Float in hot water as the sun drops over the Pacific. ~20 min from the Fable. Perfect end to the trip.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOTEL -->
+    <section class="timeline-section" id="hotel">
+      <div class="section-label">Your crew layover</div>
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--navy-soft);color:var(--navy);">🏨</span>
+        Fable Christchurch
+      </h2>
+      <div class="hotel-card">
+        <div class="hotel-card-inner">
+          <div class="hotel-name">Fable Christchurch Hotel</div>
+          <div class="hotel-address">166 Gloucester Street, Christchurch Central City<br />Christchurch 8011, New Zealand</div>
+          <div class="hotel-grid">
+            <div class="hotel-stat">
+              <div class="hotel-stat-label">Phone</div>
+              <div class="hotel-stat-value">+64 3 943 3888</div>
+            </div>
+            <div class="hotel-stat">
+              <div class="hotel-stat-label">Email</div>
+              <div class="hotel-stat-value" style="font-size:0.72rem">reservations@fablechristchurch.com</div>
+            </div>
+            <div class="hotel-stat">
+              <div class="hotel-stat-label">Call time</div>
+              <div class="hotel-stat-value">3 hr before STD</div>
+            </div>
+            <div class="hotel-stat">
+              <div class="hotel-stat-label">Pickup</div>
+              <div class="hotel-stat-value">2 hr before STD</div>
+            </div>
+          </div>
+          <div class="hotel-perks">
+            <span class="hotel-perk">Double-bed rooms</span>
+            <span class="hotel-perk">Free gym</span>
+            <span class="hotel-perk">25% F&amp;B discount</span>
+            <span class="hotel-perk">NZD 20 breakfast</span>
+            <span class="hotel-perk">Crew lounge</span>
+            <span class="hotel-perk">Free WiFi</span>
+            <span class="hotel-perk">In-room safe</span>
+          </div>
+        </div>
+      </div>
+      <div class="tip">
+        <strong>SQ Station Contacts — Christchurch</strong>
+        Station Manager Wenzhen Lim · (03) 357 3561 · +64 021 609 263<br />
+        Duty Officer (hotel / transport / CIQ) · (03) 357 3560 · +64 021 748 380
+      </div>
+    </section>
+
+    <!-- TEKAPO STAY -->
+    <section class="timeline-section" id="tekapo-stay">
+      <div class="section-label">Nights in the Mackenzie</div>
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--teal-soft);color:var(--teal);">🌙</span>
+        Where to Stay in Tekapo
+      </h2>
+      <div class="stay-card">
+        <div class="stay-card-title">Book an Airbnb in Lake Tekapo</div>
+        <div class="stay-card-desc">
+          The Fable is your CHC crew hotel — for your Tekapo nights you'll want something on or near the lake. Airbnb has great options: lakefront cottages, high-country farmstays, and cosy studio apartments. Book early — Tekapo is small and fills up fast, especially on dark-sky nights.
+        </div>
+        <a class="stay-btn" href="https://www.airbnb.com/s/Lake-Tekapo--New-Zealand/homes" target="_blank" rel="noopener noreferrer">↗ Search Airbnb — Lake Tekapo</a>
+      </div>
+      <div class="note-teal">
+        <strong>🦙 Alpacas near Tekapo — search tip</strong>
+        When filtering Airbnb, search for "farm stay" or "high country station" — some Mackenzie Basin properties have alpacas, sheep and deer right on site. You might find them closer than you think.
       </div>
     </section>
 
     <!-- LANDMARKS -->
     <section class="collapsible" id="landmarks">
       <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
-        <span>🏛 Landmarks along the way</span>
+        <span>🏔 Landmarks along the way</span>
         <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
         <div class="collapse-inner">
           <div class="cards">
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Christchurch+Botanic+Gardens" target="_blank" rel="noopener noreferrer">Christchurch Botanic Gardens &amp; Hagley Park</a> <span class="card-badge badge-chc">Christchurch</span></div>
-              <div class="card-desc">Huge green lung in the middle of the city. Great if you stay a night in CHC first or have a spare morning before flying out.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/Christchurch+Botanic+Gardens" target="_blank" rel="noopener noreferrer">Christchurch Botanic Gardens</a> <span class="card-badge badge-chc">City</span></div>
+              <div class="card-desc">Huge green lung in the middle of CHC. Great on a spare morning before flying out.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Rakaia+Gorge+Walkway" target="_blank" rel="noopener noreferrer">Rakaia Gorge lookout</a> <span class="card-badge badge-route">Inland route</span></div>
-              <div class="card-desc">Short viewpoint stop over the milky‑blue river gorge. Easy add‑on if the weather is clear on the way south.</div>
+              <div class="card-desc">Quick pull-over stop over the milky-blue river gorge on the drive back from Tekapo.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Church+of+the+Good+Shepherd" target="_blank" rel="noopener noreferrer">Church of the Good Shepherd</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Stone church right on the lake edge. Classic Tekapo shot with mountains (and stars) behind it.</div>
+              <div class="card-desc">Iconic stone church right on the lake edge. The classic NZ shot.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Lake+Tekapo" target="_blank" rel="noopener noreferrer">Lake Tekapo foreshore</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Rocky shoreline, big sky, and ridiculously blue water. Easy to access and you can walk as much or as little as you like.</div>
+              <div class="card-desc">Rocky shoreline, big sky, ridiculously turquoise water. Walk as much or little as you like.</div>
             </article>
           </div>
         </div>
@@ -639,27 +762,27 @@
     <!-- CAFES -->
     <section class="collapsible" id="cafes">
       <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
-        <span>☕ Cafes on this loop</span>
+        <span>☕ Cafés on this loop</span>
         <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
         <div class="collapse-inner">
           <div class="cards">
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Unknown+Chapter+Coffee+Roasters" target="_blank" rel="noopener noreferrer">Unknown Chapter Coffee Roasters</a> <span class="card-badge badge-chc">Christchurch CBD</span></div>
-              <div class="card-desc">Strong coffee + brunch in the city. Easy first stop if you stay a night in CHC or swing back before flying home.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/Unknown+Chapter+Coffee+Roasters" target="_blank" rel="noopener noreferrer">Unknown Chapter Coffee</a> <span class="card-badge badge-chc">CBD</span></div>
+              <div class="card-desc">Strong coffee + brunch in the city. Good first stop if you spend a night in CHC.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Hello+Sunday+Cafe" target="_blank" rel="noopener noreferrer">Hello Sunday</a> <span class="card-badge badge-chc">Sydenham</span></div>
-              <div class="card-desc">Character brunch café in a former Sunday school; creative plates and good coffee.</div>
+              <div class="card-desc">Character brunch café in a former Sunday school. Creative plates and good coffee.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/The+Greedy+Cow+Cafe" target="_blank" rel="noopener noreferrer">The Greedy Cow Café</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Tekapo’s busiest café; big cabinet and cooked breakfasts with vego/vegan/GF options.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/The+Greedy+Cow+Cafe" target="_blank" rel="noopener noreferrer">The Greedy Cow</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
+              <div class="card-desc">Tekapo's busiest café. Big cabinet food, cooked breakfasts, vego/vegan/GF options.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Astro+Cafe" target="_blank" rel="noopener noreferrer">Astro Café</a> <span class="card-badge badge-tekapo">Mt John</span></div>
-              <div class="card-desc">Coffee and cake with 360° views over Lake Tekapo and the Mackenzie Basin. Worth the drive on a clear day.</div>
+              <div class="card-desc">Coffee with 360° views over Tekapo and the Mackenzie Basin. Worth it on a clear day.</div>
             </article>
           </div>
         </div>
@@ -669,7 +792,7 @@
     <!-- EAT -->
     <section class="collapsible" id="eat">
       <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
-        <span>🍽 Where to Eat (Christchurch &amp; Tekapo)</span>
+        <span>🍽 Where to Eat</span>
         <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
@@ -677,57 +800,27 @@
           <div class="cards">
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Grizzly+Baked+Goods" target="_blank" rel="noopener noreferrer">Grizzly Baked Goods</a> <span class="card-badge badge-chc">Christchurch</span></div>
-              <div class="card-desc">Cult bakery for sourdough, cruffins and donuts. Good for breakfast on a CHC day or snacks for the drive.</div>
+              <div class="card-desc">Cult bakery — sourdough, cruffins, donuts. Load up for the road trip.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Bellbird+Baked+Goods" target="_blank" rel="noopener noreferrer">Bellbird Baked Goods</a> <span class="card-badge badge-chc">Christchurch</span></div>
-              <div class="card-desc">Artisan bakery with excellent sourdough and classic pastries. Another strong “load up before driving” option.</div>
-            </article>
-            <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Little+High+Eatery" target="_blank" rel="noopener noreferrer">Little High Eatery</a> <span class="card-badge badge-chc">Christchurch CBD</span></div>
-              <div class="card-desc">Trendy indoor food hall with burgers, dumplings, pizza etc. Good casual dinner if you spend a night in town.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/Little+High+Eatery" target="_blank" rel="noopener noreferrer">Little High Eatery</a> <span class="card-badge badge-chc">CBD</span></div>
+              <div class="card-desc">Indoor food hall — burgers, dumplings, pizza. Great casual dinner in the city.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Twenty+Seven+Steps" target="_blank" rel="noopener noreferrer">Twenty Seven Steps</a> <span class="card-badge badge-chc">New Regent St</span></div>
-              <div class="card-desc">Cozy upstairs bistro on a pastel tram street; seasonal NZ produce and a nice wine list.</div>
+              <div class="card-desc">Cosy upstairs bistro on the pastel tram street. Seasonal NZ produce and a solid wine list.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Blue+Lake+Eatery+and+Bar" target="_blank" rel="noopener noreferrer">Blue Lake Eatery &amp; Bar</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Hearty Mount Cook salmon, lamb shanks and local beers. One of Tekapo’s most consistently good dinner spots.</div>
+              <div class="card-desc">Mt Cook salmon, lamb shanks, local beers. Tekapo's most consistently good dinner.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Kohan+Restaurant" target="_blank" rel="noopener noreferrer">Kohan</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Japanese restaurant on the lake with great bento and donburi; lighter but still feels like a “real” dinner.</div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VISIT -->
-    <section class="collapsible" id="visit">
-      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
-        <span>📍 Where to Visit (beyond this loop)</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="collapse-body">
-        <div class="collapse-inner">
-          <div class="cards">
-            <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Christchurch+Gondola" target="_blank" rel="noopener noreferrer">Christchurch Gondola &amp; Port Hills</a> <span class="card-badge badge-chc">Christchurch</span></div>
-              <div class="card-desc">Cable car up to big views over the city, Lyttelton Harbour and the Alps. Easy win on a clear second day.</div>
+              <div class="card-desc">Japanese on the lake — bento and donburi. Lighter but still feels like a proper dinner.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Riverside+Market" target="_blank" rel="noopener noreferrer">Riverside Market</a> <span class="card-badge badge-chc">Christchurch CBD</span></div>
-              <div class="card-desc">Indoor food market with lots of small stalls and local products. Nice place to graze or pick up gifts.</div>
-            </article>
-            <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/International+Antarctic+Centre" target="_blank" rel="noopener noreferrer">International Antarctic Centre</a> <span class="card-badge badge-chc">By CHC airport</span></div>
-              <div class="card-desc">Penguins, snowstorms, Hagglund rides. Very solid “do this near the airport” activity on arrival or departure day.</div>
-            </article>
-            <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Hanmer+Springs+Thermal+Pools+%26+Spa" target="_blank" rel="noopener noreferrer">Hanmer Springs Thermal Pools</a> <span class="card-badge badge-daytrip">Day trip</span></div>
-              <div class="card-desc">Alpine‑town hot pools and slides ~1.5–2 hours north of Christchurch. Great for a different kind of soak day.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/Bellbird+Baked+Goods" target="_blank" rel="noopener noreferrer">Bellbird Baked Goods</a> <span class="card-badge badge-chc">Christchurch</span></div>
+              <div class="card-desc">Artisan bakery with excellent sourdough and pastries. Another solid pre-drive option.</div>
             </article>
           </div>
         </div>
@@ -737,7 +830,7 @@
     <!-- DO -->
     <section class="collapsible" id="do">
       <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
-        <span>🧖 Things to Do (alpacas, hot pools, stars)</span>
+        <span>🧖 Things to Do</span>
         <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
@@ -745,27 +838,35 @@
           <div class="cards">
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Sherlin+Alpacas" target="_blank" rel="noopener noreferrer">Sherlin Alpaca Farm Tours</a> <span class="card-badge badge-chc">West Melton</span></div>
-              <div class="card-desc">Family‑run farm ~25 minutes from CHC; hand‑feed friendly alpacas, chill farm vibe, easy photos.</div>
+              <div class="card-desc">Family-run farm 25 min from CHC. Hand-feed friendly alpacas, chill farm vibe, easy photos.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/Silverstream+Alpaca+Stud+%26+Farmstay" target="_blank" rel="noopener noreferrer">Silverstream Alpaca Stud</a> <span class="card-badge badge-chc">Near Kaiapoi</span></div>
-              <div class="card-desc">Another alpaca option north of Christchurch with structured tours and a small shop; good if you’re heading that way.</div>
+              <div class="card-desc">Another alpaca option north of Christchurch with structured tours and a small shop.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/place/International+Antarctic+Centre" target="_blank" rel="noopener noreferrer">International Antarctic Centre</a> <span class="card-badge badge-chc">By airport</span></div>
+              <div class="card-desc">Penguins, snowstorms, Hagglund rides. Great arrival or departure day activity near CHC.</div>
             </article>
             <article class="card">
               <div class="card-name"><a href="https://www.google.com/maps/place/He+Puna+Taimoana+-+New+Brighton+Hot+Pools" target="_blank" rel="noopener noreferrer">He Puna Taimoana</a> <span class="card-badge badge-chc">New Brighton</span></div>
-              <div class="card-desc">Modern oceanfront hot pools by the New Brighton pier. Perfect for a sunset soak on your city day.</div>
+              <div class="card-desc">Oceanfront hot pools by the pier. Perfect for a sunset soak on your city day.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.google.com/maps/place/Tekapo+Springs" target="_blank" rel="noopener noreferrer">Tekapo Springs – Hot Pools</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Multiple hot pools themed on local lakes, plus spa and seasonal extras. Great late‑afternoon/early‑evening reset.</div>
+              <div class="card-name"><a href="https://www.google.com/maps/place/Tekapo+Springs" target="_blank" rel="noopener noreferrer">Tekapo Springs</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
+              <div class="card-desc">Multiple hot pools themed on local lakes, spa and seasonal extras. Great late-afternoon reset.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.tekapostargazing.co.nz/" target="_blank" rel="noopener noreferrer">Tekapo Star Gazing (in the pools)</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">Guided night‑sky intro followed by floating in hot pools under the Aoraki Mackenzie Dark Sky Reserve.</div>
+              <div class="card-name"><a href="https://www.tekapostargazing.co.nz/" target="_blank" rel="noopener noreferrer">Tekapo Star Gazing</a> <span class="card-badge badge-tekapo">Dark Sky</span></div>
+              <div class="card-desc">Guided night-sky intro then float in the hot pools under the Aoraki Dark Sky Reserve.</div>
             </article>
             <article class="card">
-              <div class="card-name"><a href="https://www.darkskyproject.co.nz/" target="_blank" rel="noopener noreferrer">Dark Sky Project tours</a> <span class="card-badge badge-tekapo">Tekapo</span></div>
-              <div class="card-desc">More telescope‑heavy observatory experiences – perfect if you want the full astronomy nerd treatment.</div>
+              <div class="card-name"><a href="https://www.darkskyproject.co.nz/" target="_blank" rel="noopener noreferrer">Dark Sky Project</a> <span class="card-badge badge-tekapo">Observatory</span></div>
+              <div class="card-desc">Telescope-heavy observatory experience — for the full astronomy treatment.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/place/Christchurch+Gondola" target="_blank" rel="noopener noreferrer">Christchurch Gondola</a> <span class="card-badge badge-chc">Port Hills</span></div>
+              <div class="card-desc">Cable car up to views over the city, Lyttelton Harbour and the Alps.</div>
             </article>
           </div>
         </div>
@@ -776,42 +877,56 @@
     <section class="timeline-section" id="mini">
       <h2 class="section-title">
         <span class="section-icon" style="background:var(--amber-soft);color:var(--amber);">✦</span>
-        Mini itineraries – plug into the 2-day trip
+        Mini Routes at a Glance
       </h2>
       <article class="mini">
-        <div class="mini-title">Day 1 (this page): Land → Alpacas → Tekapo &amp; Stars</div>
-        <p class="mini-flow">CHC airport <span class="arrow">→</span> Sherlin Alpacas <span class="arrow">→</span> Geraldine lunch <span class="arrow">→</span> Lake Tekapo &amp; church <span class="arrow">→</span> Mt John summit <span class="arrow">→</span> Tekapo Springs &amp; dark‑sky stargazing.</p>
+        <div class="mini-title">Day 1 — Land → Alpacas → Tekapo</div>
+        <p class="mini-flow">CHC airport <span class="arrow">→</span> Sherlin Alpacas <span class="arrow">→</span> Geraldine lunch <span class="arrow">→</span> Lake Tekapo &amp; church <span class="arrow">→</span> Mt John <span class="arrow">→</span> Dinner <span class="arrow">→</span> Stars &amp; hot pools</p>
       </article>
       <article class="mini">
-        <div class="mini-title">Day 2 idea – Tekapo lakeside + back to Christchurch</div>
-        <p class="mini-flow">Morning lakeside / Peninsula Walkway <span class="arrow">→</span> brunch at The Greedy Cow <span class="arrow">→</span> drive back via Rakaia Gorge lookout <span class="arrow">→</span> Christchurch Gondola or Botanic Gardens <span class="arrow">→</span> sunset soak at He Puna Taimoana.</p>
+        <div class="mini-title">Day 2 — Tekapo Morning → Back to Christchurch</div>
+        <p class="mini-flow">Peninsula walkway <span class="arrow">→</span> Greedy Cow brunch <span class="arrow">→</span> Drive back via Rakaia Gorge <span class="arrow">→</span> CHC Gondola or Gardens <span class="arrow">→</span> Fable check-in <span class="arrow">→</span> He Puna Taimoana sunset soak</p>
       </article>
       <article class="mini">
-        <div class="mini-title">If you stay in CHC first: city loop + alpacas</div>
-        <p class="mini-flow">Unknown Chapter / city brunch <span class="arrow">→</span> Botanic Gardens &amp; Avon River <span class="arrow">→</span> Sherlin or Silverstream alpacas <span class="arrow">→</span> New Brighton pier <span class="arrow">→</span> He Puna Taimoana hot pools.</p>
+        <div class="mini-title">If you stay in CHC first — city loop</div>
+        <p class="mini-flow">Unknown Chapter brunch <span class="arrow">→</span> Botanic Gardens &amp; Avon River <span class="arrow">→</span> Sherlin alpacas <span class="arrow">→</span> New Brighton pier <span class="arrow">→</span> He Puna Taimoana hot pools</p>
       </article>
-
       <div class="tip">
         <strong>On your phone</strong>
         Tap any place name to open it in Google Maps, then save it to a list ("CHC + Tekapo") so you can see everything on one map and reorder on the fly.
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    Christchurch &amp; Lake Tekapo – Day 1 · 26 March 2026 · Built as a simple static page so it’s fast and easy to tweak.
+    Christchurch &amp; Lake Tekapo · SQ 297 · Thu 26 Mar 2026 · Fable Christchurch Hotel
   </footer>
 
   <script>
-    // simple nav active state on click
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.querySelectorAll('.nav a');
+      const sections = document.querySelectorAll('section[id]');
+
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           navLinks.forEach(l => l.classList.remove('active'));
           link.classList.add('active');
         });
       });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(l => {
+              l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+
+      sections.forEach(s => observer.observe(s));
     });
 
     function toggleSection(button) {
@@ -821,5 +936,6 @@
       body.classList.toggle('open', isOpen);
     }
   </script>
+
 </body>
 </html>
