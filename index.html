@@ -449,6 +449,111 @@
       .nav a { padding: 0.65rem 0.7rem; font-size: 0.7rem; }
       .hotel-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ── FOOD GUIDE ── */
+    .fg-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .fg-tab {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .fg-tab:hover { background: var(--bg2); color: var(--text); }
+    .fg-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .fg-group { margin-bottom: 2rem; }
+    .fg-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .fg-group[data-cat="cafe"] .fg-group-label  { color: var(--green); border-color: var(--green-soft); }
+    .fg-group[data-cat="bar"] .fg-group-label   { color: var(--accent); border-color: var(--accent-soft); }
+    .fg-group[data-cat="dinner"] .fg-group-label { color: var(--navy); border-color: var(--navy-soft); }
+    .fg-group[data-cat="asian"] .fg-group-label  { color: var(--blue); border-color: var(--blue-soft); }
+    .fg-group.hidden { display: none; }
+
+    .fg-cards { display: flex; flex-direction: column; gap: 0.75rem; }
+    .fg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.15s;
+    }
+    .fg-card:hover { box-shadow: var(--shadow-lg); }
+    .fg-card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .fg-card-name {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+    .fg-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .fg-badge-chc { background: var(--teal-soft); color: var(--teal); }
+    .fg-card-desc {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 0.65rem;
+    }
+    .fg-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      margin-bottom: 0.55rem;
+    }
+    .fg-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .fg-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .fg-tag-green  { background: var(--green-soft);  border-color: var(--green);  color: var(--green); }
+    .fg-tag-blue   { background: var(--blue-soft);   border-color: var(--blue);   color: var(--blue); }
+    .fg-tag-accent { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
@@ -481,6 +586,7 @@
       <a href="#eat">Eat</a>
       <a href="#do">Do</a>
       <a href="#mini">Routes</a>
+      <a href="#food-guide" style="color:var(--accent);font-weight:600;">🍽 Food Guide</a>
     </div>
   </nav>
 
@@ -897,6 +1003,345 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════
+         FOOD GUIDE — comprehensive dining section
+         ══════════════════════════════════════════ -->
+    <section class="timeline-section" id="food-guide" style="padding-top:2.5rem;">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--accent-soft);color:var(--accent);">🍽</span>
+        Christchurch Food Guide
+      </h2>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:1.4rem;line-height:1.65;">
+        Raining outside? Sorted. 14 places covering everything from speakeasies to dim sum — filtered by mood.
+        All near Fable Hotel (Gloucester St), or a short Uber away.
+      </p>
+
+      <!-- CATEGORY FILTER TABS -->
+      <div class="fg-tabs" role="tablist">
+        <button class="fg-tab active" onclick="filterFood('all',this)" role="tab">All</button>
+        <button class="fg-tab" onclick="filterFood('cafe',this)" role="tab">☕ Cafes</button>
+        <button class="fg-tab" onclick="filterFood('bar',this)" role="tab">🍸 Bars</button>
+        <button class="fg-tab" onclick="filterFood('dinner',this)" role="tab">🍽 NZ &amp; Western</button>
+        <button class="fg-tab" onclick="filterFood('asian',this)" role="tab">🍜 Asian</button>
+      </div>
+
+      <!-- ─── CAFES ─── -->
+      <div class="fg-group" data-cat="cafe">
+        <div class="fg-group-label">☕ Cafes &amp; Brunch</div>
+        <div class="fg-cards">
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Hello Sunday</span>
+              <span class="fg-badge fg-badge-chc">Sydenham · 15 min walk</span>
+            </div>
+            <p class="fg-card-desc">Christchurch's most-Instagrammed brunch café, set in a converted Sunday school. Creative plates — think smashed avo with a twist, house-made granola, shakshuka. Lively weekend vibe, cosy when it's grey outside.</p>
+            <div class="fg-card-meta">
+              <span>📍 6 Elgin St, Sydenham</span>
+              <span>⏰ Daily 08:00–15:00</span>
+              <span>💵 NZD 18–28</span>
+              <span>📞 Booking recommended weekends</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-green">Good coffee</span>
+              <span class="fg-tag">Brunch all day</span>
+              <span class="fg-tag">Weekend queue — go early</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">C1 Espresso</span>
+              <span class="fg-badge fg-badge-chc">CBD · 8 min walk</span>
+            </div>
+            <p class="fg-card-desc">Legendary CHC cafe in a converted post office — famous for delivering food to your table via pneumatic tube. Solid specialty coffee, big all-day menu. Great for a long rainy sit-down with a good book and good food.</p>
+            <div class="fg-card-meta">
+              <span>📍 185 High St, Christchurch CBD</span>
+              <span>⏰ Mon–Fri 07:30–16:00, Sat–Sun 08:00–16:00</span>
+              <span>💵 NZD 16–26</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-green">Pneumatic tube delivery</span>
+              <span class="fg-tag">CHC institution</span>
+              <span class="fg-tag">Good for rainy days</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Unknown Chapter Coffee</span>
+              <span class="fg-badge fg-badge-chc">CBD · 5 min walk</span>
+            </div>
+            <p class="fg-card-desc">Specialty roaster and café in the CBD. Clean, minimal space with seriously good espresso. Popular with locals for a quick quality flat white or a slower filter. Not a big food menu but excellent baked goods.</p>
+            <div class="fg-card-meta">
+              <span>📍 Christchurch CBD</span>
+              <span>⏰ Mon–Fri from 07:00</span>
+              <span>💵 NZD 5–15</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-green">Best flat white in CBD</span>
+              <span class="fg-tag">5 min from hotel</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ─── BARS ─── -->
+      <div class="fg-group" data-cat="bar">
+        <div class="fg-group-label">🍸 Bars &amp; Speakeasies</div>
+        <div class="fg-cards">
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Austin Club</span>
+              <span class="fg-badge fg-badge-chc">CBD · 10 min walk</span>
+            </div>
+            <p class="fg-card-desc">CHC's best speakeasy — a prohibition-era cocktail bar hidden in a basement laneway off High Street. Entry by monthly password only (check their Instagram @austinclubchch for the current one). Look for the neon green sign and a pineapple door. The cocktails are genuinely excellent and the room feels like 1920s New York.</p>
+            <div class="fg-card-meta">
+              <span>📍 236 High Street (laneway beside Glassons)</span>
+              <span>⏰ Wed–Sat 17:00–late</span>
+              <span>💵 NZD 15–25 per cocktail</span>
+              <span>🔑 Password required — check @austinclubchch on Instagram</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-accent">Speakeasy</span>
+              <span class="fg-tag">Password entry</span>
+              <span class="fg-tag">1920s vibe</span>
+              <span class="fg-tag">No booking</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Red Light District</span>
+              <span class="fg-badge fg-badge-chc">CBD · 12 min walk</span>
+            </div>
+            <p class="fg-card-desc">CHC's first speakeasy-style bar, hidden behind a laundromat on Victoria Street. Enter down the side alley, through the launderette — the door with the tumble dryer front on it. Inside: moody Shanghai turn-of-the-century atmosphere, red lanterns, excellent cocktails. One of the city's most unique atmospheres.</p>
+            <div class="fg-card-meta">
+              <span>📍 123 Victoria St (through the laundromat)</span>
+              <span>⏰ Daily 17:00–midnight</span>
+              <span>💵 NZD 17–43pp</span>
+              <span>📞 +64 3-365 0862</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-accent">Speakeasy</span>
+              <span class="fg-tag">Shanghai-inspired</span>
+              <span class="fg-tag">Hidden entrance</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Mr Brightside Rooftop Bar</span>
+              <span class="fg-badge fg-badge-chc">Oxford Terrace · 10 min walk</span>
+            </div>
+            <p class="fg-card-desc">Penthouse rooftop bar atop the historic Public Trust Building (1925) on Oxford Terrace. Retractable roof, 360° panoramic views over the Avon River, Port Hills, and snow-capped Alps when clear. Elevated cocktails and casual food. Best spot in CHC for a sundowner or a rainy-day covered rooftop session.</p>
+            <div class="fg-card-meta">
+              <span>📍 Level 4, 152 Oxford Terrace</span>
+              <span>⏰ Wed–Thu 15:00–midnight · Fri–Sat 12:00–02:00 · Sun 12:00–21:00</span>
+              <span>💵 NZD 15–25 per cocktail · Food NZD 15–30</span>
+              <span>📞 +64 508 538 354 · Bookings: mrbrightside.co.nz</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-blue">Rooftop</span>
+              <span class="fg-tag">360° views</span>
+              <span class="fg-tag">Retractable roof</span>
+              <span class="fg-tag">Book ahead Fri–Sat</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ─── NZ / WESTERN DINNER ─── -->
+      <div class="fg-group" data-cat="dinner">
+        <div class="fg-group-label">🍽 NZ &amp; Western Dinner</div>
+        <div class="fg-cards">
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Gatherings</span>
+              <span class="fg-badge fg-badge-chc">CBD · 8 min walk</span>
+            </div>
+            <p class="fg-card-desc">Intimate fine dining with a strong focus on organic seasonal produce, wild meats, and sustainable seafood. The menu changes regularly — expect venison, line-caught fish, local vegetables. Natural wines, cosy room, genuinely personal service. One of CHC's best-kept dinner secrets.</p>
+            <div class="fg-card-meta">
+              <span>📍 Christchurch CBD</span>
+              <span>⏰ Dinner only · Tue–Sat · Book ahead</span>
+              <span>💵 NZD 100–150pp</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-green">Organic NZ produce</span>
+              <span class="fg-tag">Wild meats</span>
+              <span class="fg-tag fg-tag-accent">Book essential</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">INATI</span>
+              <span class="fg-badge fg-badge-chc">CBD · 10 min walk</span>
+            </div>
+            <p class="fg-card-desc">Award-winning chef's table restaurant — one of CHC's most acclaimed dining experiences. Open kitchen, tasting menu format, locally sourced Canterbury ingredients with artistic presentation. Twice recognised by Cuisine magazine. A proper splurge for a special night in.</p>
+            <div class="fg-card-meta">
+              <span>📍 Christchurch CBD</span>
+              <span>⏰ Dinner · Wed–Sat · Chef's table format</span>
+              <span>💵 NZD 150–200+pp</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-accent">Book essential</span>
+              <span class="fg-tag">Chef's table</span>
+              <span class="fg-tag">Award-winning</span>
+              <span class="fg-tag">Special occasion</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Jaba Grill &amp; Bar</span>
+              <span class="fg-badge fg-badge-chc">CBD · 10 min walk</span>
+            </div>
+            <p class="fg-card-desc">CHC's most consistently praised steakhouse since 2018. Kopa charcoal grill produces properly smoky, high-heat crust on Canterbury beef and lamb. Not just a tourist steakhouse — locals eat here regularly. Better quality-to-price than most alternatives.</p>
+            <div class="fg-card-meta">
+              <span>📍 Christchurch CBD</span>
+              <span>⏰ Dinner daily from 17:00</span>
+              <span>💵 NZD 70–140pp</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag">Kopa charcoal grill</span>
+              <span class="fg-tag fg-tag-green">Best steak in CHC</span>
+              <span class="fg-tag">Book ahead</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Twenty Seven Steps</span>
+              <span class="fg-badge fg-badge-chc">New Regent St · 8 min walk</span>
+            </div>
+            <p class="fg-card-desc">Cosy upstairs bistro on CHC's prettiest street — the pastel-coloured heritage tram precinct of New Regent Street. Seasonal NZ produce, solid wine list, warm service. Great mid-range option when you want something nice without the full fine-dining commitment.</p>
+            <div class="fg-card-meta">
+              <span>📍 16 New Regent St, Christchurch CBD</span>
+              <span>⏰ Lunch &amp; Dinner daily</span>
+              <span>💵 NZD 40–80pp</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-blue">New Regent St heritage</span>
+              <span class="fg-tag">Seasonal NZ</span>
+              <span class="fg-tag">Book ahead dinner</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ─── ASIAN ─── -->
+      <div class="fg-group" data-cat="asian">
+        <div class="fg-group-label">🍜 Asian — Korean &amp; Japanese</div>
+        <div class="fg-cards">
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Ramen Ria</span>
+              <span class="fg-badge fg-badge-chc">Riverside Market · 5 min walk</span>
+            </div>
+            <p class="fg-card-desc">Consistently the most recommended ramen in Christchurch — rich broths, good chashu, proper Japanese ramen bar energy inside the Riverside Market. Open late, great for a bowl on a rainy evening. The tonkotsu is the move.</p>
+            <div class="fg-card-meta">
+              <span>📍 3/112 Oxford Terrace, Riverside Market</span>
+              <span>⏰ Mon–Wed 11:00–22:00 · Thu–Sun 10:30–23:00</span>
+              <span>💵 NZD 20–30 per bowl</span>
+              <span>📞 0204 013 3226</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-green">Best ramen in CHC</span>
+              <span class="fg-tag">5 min from hotel</span>
+              <span class="fg-tag">Open late</span>
+              <span class="fg-tag">No booking needed</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Cookai Sushi Train &amp; Bar</span>
+              <span class="fg-badge fg-badge-chc">The Crossing · 8 min walk</span>
+            </div>
+            <p class="fg-card-desc">CHC's most fun Japanese experience — a proper kaiten sushi train with 80+ items rotating past. Sushi, sashimi, tempura, gyoza, edamame. Also a bar component for sake and Japanese beers. Located inside The Crossing shopping centre on Level 1 — easy to drop in without a booking.</p>
+            <div class="fg-card-meta">
+              <span>📍 Level 1, The Crossing, 166 Cashel St</span>
+              <span>⏰ Lunch 11:30–15:00 · Dinner 17:00–20:00 · 7 days</span>
+              <span>💵 NZD 4–8 per plate · NZD 25–45pp</span>
+              <span>📞 +64 3-343 2860</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-blue">Sushi train</span>
+              <span class="fg-tag">80+ items</span>
+              <span class="fg-tag">7 days</span>
+              <span class="fg-tag">No booking needed</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Zen Sushi &amp; Dumplings</span>
+              <span class="fg-badge fg-badge-chc">Arts Centre · 12 min walk</span>
+            </div>
+            <p class="fg-card-desc">Excellent Japanese café at the Arts Centre (Registry Building) — sushi, dumplings, donburi rice bowls, and ramen. Uses fresh, locally sourced ingredients. A more casual and affordable Japanese option than Cookai. Great for lunch or an early dinner.</p>
+            <div class="fg-card-meta">
+              <span>📍 301 Montreal St, Arts Centre – Registry Building</span>
+              <span>⏰ Mon–Tue 11:00–14:30 · Wed–Sun 11:00–19:00</span>
+              <span>💵 NZD 18–30pp</span>
+              <span>📞 03 379 6888</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag">Japanese · Casual</span>
+              <span class="fg-tag fg-tag-green">Good value</span>
+              <span class="fg-tag">Arts Centre location</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">KINJI Japanese Restaurant</span>
+              <span class="fg-badge" style="background:var(--amber-soft);color:var(--amber);">Bryndwr · 15 min Uber</span>
+            </div>
+            <p class="fg-card-desc">CHC's best proper Japanese restaurant — the Chef's Omakase Sashimi/Sushi platter is the reason to come. High-quality fish, traditional techniques, intimate atmosphere. Not in the CBD but absolutely worth the short Uber ride for a proper Japanese dinner that could hold its own in Auckland or Tokyo.</p>
+            <div class="fg-card-meta">
+              <span>📍 279B Greers Road, Bryndwr</span>
+              <span>⏰ Tue–Sat 17:00–21:30 · Closed Sun–Mon</span>
+              <span>💵 Omakase from NZD 60pp · Dinner NZD 50–100pp</span>
+              <span>📞 03-359-4697 · Book: kinjirestaurant.com</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag fg-tag-accent">Book essential</span>
+              <span class="fg-tag">Omakase available</span>
+              <span class="fg-tag">Best Japanese in CHC</span>
+              <span class="fg-tag">15 min Uber ~NZD 18</span>
+            </div>
+          </article>
+
+          <article class="fg-card">
+            <div class="fg-card-header">
+              <span class="fg-card-name">Little High Eatery — Korean stall</span>
+              <span class="fg-badge fg-badge-chc">CBD · 8 min walk</span>
+            </div>
+            <p class="fg-card-desc">Little High is CHC's indoor food hall with 8+ stalls — there's usually a Korean or Asian street food vendor among them. Great for when you want variety, can't decide, or want something quick and casual. Also has good burgers, dumplings, and dessert. Open daily, no booking.</p>
+            <div class="fg-card-meta">
+              <span>📍 255 St Asaph St, Christchurch CBD</span>
+              <span>⏰ Mon–Sat 11:00–21:00 · Sun 11:00–16:00</span>
+              <span>💵 NZD 15–25pp</span>
+            </div>
+            <div class="fg-card-tags">
+              <span class="fg-tag">Food hall</span>
+              <span class="fg-tag">No booking</span>
+              <span class="fg-tag fg-tag-green">Multiple cuisines</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -934,6 +1379,14 @@
       if (!body) return;
       const isOpen = button.classList.toggle('open');
       body.classList.toggle('open', isOpen);
+    }
+
+    function filterFood(cat, btn) {
+      document.querySelectorAll('.fg-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.fg-group').forEach(g => {
+        g.classList.toggle('hidden', cat !== 'all' && g.dataset.cat !== cat);
+      });
     }
   </script>
 
